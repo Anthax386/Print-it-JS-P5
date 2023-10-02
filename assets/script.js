@@ -38,16 +38,19 @@ let curentImg = 1;
 let activeDot = document.getElementById(curentImg);
 activeDot.classList.add('dot_selected');
 
-arrowLeft.addEventListener("click", function() {
-	let bannerImg = document.getElementById('banner-img');
+let bannerImg = document.getElementById('banner-img');
+let bannerTxt = document.getElementById('banner-txt')
 
+arrowLeft.addEventListener("click", function() {
 	if(curentImg === 1) {
 		bannerImg.style.animation="disparition 250ms ease-in"
 		activeDot.classList.remove('dot_selected');
 
 		setTimeout(() => {
 			curentImg = slides.length;
+
 			bannerImg.src=slides[curentImg-1].src;
+			bannerTxt.innerHTML=slides[curentImg-1].tagLine;
 
 			bannerImg.style.animation="apparition 250ms ease-in-out"
 		
@@ -61,7 +64,9 @@ arrowLeft.addEventListener("click", function() {
 
 		setTimeout(() => {
 			curentImg--;
+
 			bannerImg.src=slides[curentImg-1].src;
+			bannerTxt.innerHTML=slides[curentImg-1].tagLine;
 	
 			bannerImg.style.animation="apparition 250ms ease-in-out"
 			
@@ -72,8 +77,6 @@ arrowLeft.addEventListener("click", function() {
 });
 
 arrowRight.addEventListener("click", function() {
-	let bannerImg = document.getElementById('banner-img');
-
 	if(curentImg < slides.length) {
 		bannerImg.style.animation="disparition 250ms ease-in"
 
@@ -81,7 +84,9 @@ arrowRight.addEventListener("click", function() {
 
 		setTimeout(() => {
 			curentImg++;
+
 			bannerImg.src=slides[curentImg-1].src;
+			bannerTxt.innerHTML=slides[curentImg-1].tagLine;
 
 			bannerImg.style.animation="apparition 250ms ease-in-out"
 
@@ -96,7 +101,9 @@ arrowRight.addEventListener("click", function() {
 
 		setTimeout(() => {
 			curentImg=1;
+
 			bannerImg.src=slides[curentImg-1].src;
+			bannerTxt.innerHTML=slides[curentImg-1].tagLine;
 
 			bannerImg.style.animation="apparition 250ms ease-in-out"
 
