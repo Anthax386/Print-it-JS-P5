@@ -38,77 +38,40 @@ let curentImg = 1;
 let activeDot = document.getElementById(curentImg);
 activeDot.classList.add('dot_selected');
 
-let bannerImg = document.getElementById('banner-img');
-let bannerTxt = document.getElementById('banner-txt')
+function slideImg() {
+	let bannerImg = document.getElementById('banner-img');
+	let bannerTxt = document.getElementById('banner-txt');
+
+	bannerImg.style.animation="disparition 250ms ease-in"
+	activeDot.classList.remove('dot_selected');
+
+	setTimeout(() => {
+		bannerImg.src=slides[curentImg-1].src;
+		bannerTxt.innerHTML=slides[curentImg-1].tagLine;
+
+		bannerImg.style.animation="apparition 250ms ease-in-out"
+		
+		activeDot = document.getElementById(curentImg);
+		activeDot.classList.add('dot_selected');
+	}, 250);		
+}
 
 arrowLeft.addEventListener("click", function() {
+	slideImg();
 	if(curentImg === 1) {
-		bannerImg.style.animation="disparition 250ms ease-in"
-		activeDot.classList.remove('dot_selected');
-
-		setTimeout(() => {
-			curentImg = slides.length;
-
-			bannerImg.src=slides[curentImg-1].src;
-			bannerTxt.innerHTML=slides[curentImg-1].tagLine;
-
-			bannerImg.style.animation="apparition 250ms ease-in-out"
-		
-			activeDot = document.getElementById(curentImg);
-			activeDot.classList.add('dot_selected');
-		}, 250);		
+		curentImg = slides.length;		
 	}
 	else {
-		bannerImg.style.animation="disparition 250ms ease-in"
-		activeDot.classList.remove('dot_selected');
-
-		setTimeout(() => {
-			curentImg--;
-
-			bannerImg.src=slides[curentImg-1].src;
-			bannerTxt.innerHTML=slides[curentImg-1].tagLine;
-	
-			bannerImg.style.animation="apparition 250ms ease-in-out"
-			
-			activeDot = document.getElementById(curentImg);
-			activeDot.classList.add('dot_selected');
-		}, 250);
+		curentImg--;
 	};
 });
 
 arrowRight.addEventListener("click", function() {
+	slideImg();
 	if(curentImg < slides.length) {
-		bannerImg.style.animation="disparition 250ms ease-in"
-
-		activeDot.classList.remove('dot_selected');
-
-		setTimeout(() => {
-			curentImg++;
-
-			bannerImg.src=slides[curentImg-1].src;
-			bannerTxt.innerHTML=slides[curentImg-1].tagLine;
-
-			bannerImg.style.animation="apparition 250ms ease-in-out"
-
-			activeDot = document.getElementById(curentImg);
-			activeDot.classList.add('dot_selected');
-		}, 250);
+		curentImg++;
 	}
 	else {
-		bannerImg.style.animation="disparition 250ms ease-in"
-
-		activeDot.classList.remove('dot_selected');
-
-		setTimeout(() => {
-			curentImg=1;
-
-			bannerImg.src=slides[curentImg-1].src;
-			bannerTxt.innerHTML=slides[curentImg-1].tagLine;
-
-			bannerImg.style.animation="apparition 250ms ease-in-out"
-
-			activeDot = document.getElementById(curentImg);
-			activeDot.classList.add('dot_selected');
-		}, 250);		
+		curentImg=1;		
 	};
 });
