@@ -30,7 +30,7 @@ for (let i=0; i < slides.length; i++) {
 	dot.setAttribute("id", [i+1]);
 	dot.classList.add("dot");
 	dots.appendChild(dot);
-}
+};
 
 let nbImg = slides.length;
 let curentImg = 1;
@@ -42,7 +42,7 @@ function slideImg() {
 	let bannerImg = document.getElementById('banner-img');
 	let bannerTxt = document.getElementById('banner-txt');
 
-	bannerImg.style.animation="disparition 250ms ease-in"
+	bannerImg.style.animation="disparition 250ms ease-in";
 	activeDot.classList.remove('dot_selected');
 
 	setTimeout(() => {
@@ -54,7 +54,7 @@ function slideImg() {
 		activeDot = document.getElementById(curentImg);
 		activeDot.classList.add('dot_selected');
 	}, 250);		
-}
+};
 
 arrowLeft.addEventListener("click", function() {
 	slideImg();
